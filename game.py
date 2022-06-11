@@ -10,10 +10,12 @@ class Game:
     def addUser(self, userstring):
         self.users.append(userstring)
 
-    def giveCards(cardstack, users, giveCard):
+    def giveCards(self):
         for i in range(6):
-            for user in users:
-                i = 0
-                giveCard(user, cardstack[i])
-                i += 1
+            for user in self.users:
+                user.giveCard(self.cardstack[0])
+                self.cardstack = self.cardstack[1:]
+
+        for u in self.users:
+            u.sendUpdate()
 
